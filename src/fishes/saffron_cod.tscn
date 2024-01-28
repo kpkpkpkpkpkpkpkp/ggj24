@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpslcbuwtivnv"]
+
+[ext_resource type="PackedScene" uid="uid://cn4h1lejp3hlc" path="res://src/fishes/fish.tscn" id="1_wpbpd"]
+[ext_resource type="Texture2D" uid="uid://bc8fh6d3at1kg" path="res://assets/sprites/characters/Saffron_Cod_swimmingt.png" id="2_6ly6w"]
+
+[node name="Fish" instance=ExtResource("1_wpbpd")]
+texture = ExtResource("2_6ly6w")

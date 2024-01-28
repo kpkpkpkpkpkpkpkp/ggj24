@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cumkd7mc8img4"]
+
+[ext_resource type="PackedScene" uid="uid://cn4h1lejp3hlc" path="res://src/fishes/fish.tscn" id="1_uunm0"]
+[ext_resource type="Texture2D" uid="uid://m1vl2kneb3s3" path="res://assets/sprites/characters/Haddock_swimming.png" id="2_ccflh"]
+
+[node name="Fish" instance=ExtResource("1_uunm0")]
+texture = ExtResource("2_ccflh")

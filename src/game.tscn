@@ -1,0 +1,226 @@
+[gd_scene load_steps=26 format=3 uid="uid://bu80mg3pisqic"]
+
+[ext_resource type="Script" path="res://src/game.gd" id="1_modw7"]
+[ext_resource type="PackedScene" uid="uid://bpj4eyfyqu51e" path="res://src/seal.tscn" id="1_x8kbb"]
+[ext_resource type="Texture2D" uid="uid://c486rtcs3rhg7" path="res://assets/sprites/bg/sky_backround.png" id="2_q26fm"]
+[ext_resource type="Script" path="res://src/laughter.gd" id="3_aa23e"]
+[ext_resource type="Texture2D" uid="uid://cnjoofbejkn6j" path="res://assets/sprites/bg/background_with_dock.png" id="3_eowvo"]
+[ext_resource type="Texture2D" uid="uid://c1bvnj67xg4ro" path="res://assets/sprites/bg/seaweedanimation_Sheet.png" id="3_it1wc"]
+[ext_resource type="Script" path="res://src/music.gd" id="3_y2brp"]
+[ext_resource type="AudioStream" uid="uid://tebf6hywtfw1" path="res://assets/audio/music/main theme-subsequent-loop.wav" id="4_iesn8"]
+[ext_resource type="AudioStream" uid="uid://bohncmv1kvs1i" path="res://assets/audio/sfx/Level Complete.wav" id="5_x81ko"]
+[ext_resource type="Texture2D" uid="uid://33lvadqc3vc2" path="res://assets/sprites/bg/waveanimation-Sheet.png" id="6_q03ao"]
+[ext_resource type="AudioStream" uid="uid://wrkosi8j1oxi" path="res://assets/audio/music/main theme-first-loop.wav" id="7_kt0xh"]
+[ext_resource type="PackedScene" uid="uid://bgd5aq8pctuy0" path="res://src/ui/continue.tscn" id="8_r8o6h"]
+[ext_resource type="Texture2D" uid="uid://cbxlfvpwgyrkh" path="res://assets/sprites/menu/win_screen.png" id="9_071wf"]
+[ext_resource type="Texture2D" uid="uid://lsudkmw48dyu" path="res://assets/sprites/menu/end_screen.png" id="10_n2k33"]
+[ext_resource type="FontFile" uid="uid://6gphvwy085hf" path="res://assets/DePixelBreit.ttf" id="11_ki6ml"]
+[ext_resource type="Texture2D" uid="uid://nes21m0b25bm" path="res://assets/sprites/menu/pause_screen.png" id="15_spd15"]
+[ext_resource type="Script" path="res://src/ui/pause.gd" id="15_vq5xo"]
+[ext_resource type="AudioStream" uid="uid://dji2ocf4vglj" path="res://assets/audio/sfx/Button Toggle.wav" id="16_t8sxk"]
+[ext_resource type="Texture2D" uid="uid://2bqtsn0skbir" path="res://assets/sprites/menu/resume_buttont.png" id="18_5tyuu"]
+[ext_resource type="Texture2D" uid="uid://cy24lje40unwc" path="res://assets/sprites/menu/resume_buttont_pressed.png" id="19_fy0hi"]
+[ext_resource type="Texture2D" uid="uid://ct41no022etst" path="res://assets/sprites/menu/Menu_button.png" id="19_ss0q4"]
+[ext_resource type="Texture2D" uid="uid://cvhamki2v6oua" path="res://assets/sprites/menu/Menu_button_pressed.png" id="20_akg36"]
+
+[sub_resource type="Animation" id="Animation_7jy8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xk7xi"]
+resource_name = "wave"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ParallaxBackground/ParallaxLayer/Sprite2D2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ofma8"]
+_data = {
+"RESET": SubResource("Animation_7jy8j"),
+"wave": SubResource("Animation_xk7xi")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_modw7")
+boats_to_rescue = 3
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_kt0xh")
+autoplay = true
+script = ExtResource("3_y2brp")
+music_first = ExtResource("7_kt0xh")
+music_main_loop = ExtResource("4_iesn8")
+win_jingle = ExtResource("5_x81ko")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+script = ExtResource("3_aa23e")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture_filter = 1
+texture = ExtResource("2_q26fm")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+texture = ExtResource("3_eowvo")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 1
+position = Vector2(0, 147)
+texture = ExtResource("3_it1wc")
+centered = false
+hframes = 2
+
+[node name="Seal" parent="." instance=ExtResource("1_x8kbb")]
+z_index = 1
+position = Vector2(135, 98)
+
+[node name="InputHint" parent="Seal" index="0"]
+text = "[img]res://assets/sprites/menu/arrows/Left_Arrow.png[/img][img]res://assets/sprites/menu/arrows/Up_Arrow.png[/img][img]res://assets/sprites/menu/arrows/Left_Arrow.png[/img]"
+
+[node name="Waves" type="Sprite2D" parent="."]
+z_index = 2
+texture_filter = 1
+position = Vector2(0, 30)
+texture = ExtResource("6_q03ao")
+centered = false
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Waves"]
+libraries = {
+"": SubResource("AnimationLibrary_ofma8")
+}
+
+[node name="BoatSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 23)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+modulate = Color(0.32549, 0.376471, 1, 1)
+texture_filter = 1
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 260.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("11_ki6ml")
+theme_override_font_sizes/font_size = 9
+text = "boats"
+
+[node name="Menu" parent="CanvasLayer" instance=ExtResource("8_r8o6h")]
+process_mode = 3
+visible = false
+texture_filter = 1
+tex_win = ExtResource("9_071wf")
+tex_lose = ExtResource("10_n2k33")
+
+[node name="Pause" type="TextureRect" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -51.5
+offset_right = 93.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_spd15")
+script = ExtResource("15_vq5xo")
+
+[node name="SFX" type="AudioStreamPlayer" parent="CanvasLayer/Pause"]
+stream = ExtResource("16_t8sxk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Pause"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -29.5
+offset_right = 64.0
+offset_bottom = -6.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Resume" type="TextureButton" parent="CanvasLayer/Pause/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("18_5tyuu")
+texture_pressed = ExtResource("19_fy0hi")
+
+[node name="Menu" type="TextureButton" parent="CanvasLayer/Pause/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("19_ss0q4")
+texture_pressed = ExtResource("20_akg36")
+
+[connection signal="failure" from="Seal" to="." method="_on_seal_failure"]
+[connection signal="success" from="Seal" to="." method="_on_seal_success"]
+[connection signal="menu_pressed" from="CanvasLayer/Menu" to="." method="_on_continue_menu_pressed"]
+[connection signal="try_again_pressed" from="CanvasLayer/Menu" to="." method="_on_continue_try_again_pressed"]
+[connection signal="menu_pressed" from="CanvasLayer/Pause" to="." method="_on_continue_menu_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pause/HBoxContainer/Resume" to="CanvasLayer/Pause" method="resume"]
+[connection signal="pressed" from="CanvasLayer/Pause/HBoxContainer/Menu" to="CanvasLayer/Pause" method="menu"]
+
+[editable path="Seal"]

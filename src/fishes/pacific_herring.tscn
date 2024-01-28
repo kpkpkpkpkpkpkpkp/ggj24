@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8q57bgh4qobd"]
+
+[ext_resource type="PackedScene" uid="uid://cn4h1lejp3hlc" path="res://src/fishes/fish.tscn" id="1_87s5m"]
+[ext_resource type="Texture2D" uid="uid://4b8o6xo7f27w" path="res://assets/sprites/characters/Pacific_Herring_swimmingt.png" id="2_npbve"]
+
+[node name="Fish" instance=ExtResource("1_87s5m")]
+texture = ExtResource("2_npbve")
+speedscale = 1.5
+num_bubbles = 2

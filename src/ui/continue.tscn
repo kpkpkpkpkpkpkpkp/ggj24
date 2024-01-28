@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgd5aq8pctuy0"]
+
+[ext_resource type="Script" path="res://src/ui/continue.gd" id="2_3sxjf"]
+[ext_resource type="Texture2D" uid="uid://c3chgyusychr3" path="res://assets/sprites/menu/try_again_button.png" id="3_o1qfq"]
+[ext_resource type="AudioStream" uid="uid://dji2ocf4vglj" path="res://assets/audio/sfx/Button Toggle.wav" id="3_pftrx"]
+[ext_resource type="Texture2D" uid="uid://cbxlfvpwgyrkh" path="res://assets/sprites/menu/win_screen.png" id="3_sa7hi"]
+[ext_resource type="Texture2D" uid="uid://bsvrkdamh5w6e" path="res://assets/sprites/menu/try_again_button_pressed.png" id="4_g1d64"]
+[ext_resource type="Texture2D" uid="uid://ct41no022etst" path="res://assets/sprites/menu/Menu_button.png" id="8_j8635"]
+[ext_resource type="Texture2D" uid="uid://cvhamki2v6oua" path="res://assets/sprites/menu/Menu_button_pressed.png" id="9_fhumn"]
+
+[node name="Continue" type="TextureRect"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -51.5
+offset_right = 93.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sa7hi")
+script = ExtResource("2_3sxjf")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_pftrx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -29.5
+offset_right = 64.0
+offset_bottom = -6.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TryAgain" type="TextureButton" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("3_o1qfq")
+texture_pressed = ExtResource("4_g1d64")
+
+[node name="Menu" type="TextureButton" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("8_j8635")
+texture_pressed = ExtResource("9_fhumn")
+
+[connection signal="pressed" from="HBoxContainer/TryAgain" to="." method="start"]
+[connection signal="pressed" from="HBoxContainer/Menu" to="." method="menu"]

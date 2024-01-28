@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca71k35ajjvpf"]
+
+[ext_resource type="PackedScene" uid="uid://cn4h1lejp3hlc" path="res://src/fishes/fish.tscn" id="1_41tuq"]
+[ext_resource type="Texture2D" uid="uid://l8p6coc4emgc" path="res://assets/sprites/characters/Bering_Flounder_swimming.png" id="2_5vqj5"]
+
+[node name="Fish" instance=ExtResource("1_41tuq")]
+texture = ExtResource("2_5vqj5")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn4h1lejp3hlc"]
+
+[ext_resource type="Texture2D" uid="uid://dba7xit44nlt8" path="res://assets/sprites/characters/arctic_char_swimming.png" id="1_aui2n"]
+[ext_resource type="Script" path="res://src/fishes/fish.gd" id="2_ebwsb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w0phv"]
+
+[sub_resource type="Animation" id="Animation_lxvnf"]
+resource_name = "swimmin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_wrl6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvxmf"]
+_data = {
+"RESET": SubResource("Animation_wrl6u"),
+"swimmin": SubResource("Animation_lxvnf")
+}
+
+[node name="Fish" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_aui2n")
+hframes = 2
+script = ExtResource("2_ebwsb")
+
+[node name="ListeningRange" type="Area2D" parent="."]
+show_behind_parent = true
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ListeningRange"]
+shape = SubResource("CircleShape2D_w0phv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mvxmf")
+}

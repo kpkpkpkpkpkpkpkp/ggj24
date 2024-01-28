@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ephl3kl0l6l0"]
+
+[ext_resource type="PackedScene" uid="uid://cn4h1lejp3hlc" path="res://src/fishes/fish.tscn" id="1_18mqb"]
+[ext_resource type="Texture2D" uid="uid://dcnw614i4tu6o" path="res://assets/sprites/characters/Greenland_Halibut_swimming.png" id="2_2v54d"]
+
+[node name="Fish" instance=ExtResource("1_18mqb")]
+texture = ExtResource("2_2v54d")
+speedscale = 0.5
+num_bubbles = 3

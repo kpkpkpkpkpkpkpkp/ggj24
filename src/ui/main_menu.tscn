@@ -1,0 +1,207 @@
+[gd_scene load_steps=24 format=3 uid="uid://def1l1g7qvevi"]
+
+[ext_resource type="Texture2D" uid="uid://h1kmp42i4yec" path="res://assets/sprites/menu/menu_screen.png" id="1_57dxa"]
+[ext_resource type="Texture2D" uid="uid://cm5eq0eu1e8s7" path="res://assets/sprites/menu/Start_button.png" id="2_qo1cp"]
+[ext_resource type="Script" path="res://src/ui/main_menu.gd" id="2_wg6tl"]
+[ext_resource type="Texture2D" uid="uid://ds8fr1qp8d7xw" path="res://assets/sprites/menu/Start_button_clicked.png" id="3_8chb8"]
+[ext_resource type="Texture2D" uid="uid://d21swps6w7mmr" path="res://assets/sprites/menu/About_button.png" id="5_8fkr7"]
+[ext_resource type="Texture2D" uid="uid://dntc7sdabok1o" path="res://assets/sprites/menu/about_screen.png" id="5_tt7bt"]
+[ext_resource type="Texture2D" uid="uid://c02qp5727x8vk" path="res://assets/sprites/menu/About_button_pressed.png" id="6_4o5ce"]
+[ext_resource type="Texture2D" uid="uid://ct41no022etst" path="res://assets/sprites/menu/Menu_button.png" id="6_vin3p"]
+[ext_resource type="Texture2D" uid="uid://cvhamki2v6oua" path="res://assets/sprites/menu/Menu_button_pressed.png" id="7_ue0u1"]
+[ext_resource type="Texture2D" uid="uid://d0ttj25nktxqt" path="res://assets/sprites/menu/endlessmode_button.png" id="7_uuq3i"]
+[ext_resource type="Texture2D" uid="uid://48w8xb334x6m" path="res://assets/sprites/menu/endlessmode_button_pressed.png" id="8_3gtw2"]
+[ext_resource type="Script" path="res://src/music.gd" id="10_1yqbq"]
+[ext_resource type="AudioStream" uid="uid://dji2ocf4vglj" path="res://assets/audio/sfx/Button Toggle.wav" id="10_bmc8j"]
+[ext_resource type="Script" path="res://src/ui/about_page.gd" id="10_rgwy5"]
+[ext_resource type="AudioStream" uid="uid://cl7nhiily8slf" path="res://assets/audio/music/Laughing Fish Game Menu Song Intro.wav" id="11_tjg48"]
+[ext_resource type="AudioStream" uid="uid://dsqk4a37ist1j" path="res://assets/audio/music/Laughing Fish Game Menu Song Loop.wav" id="12_kko7u"]
+[ext_resource type="Texture2D" uid="uid://bo7quvlnqljjx" path="res://assets/sprites/menu/Next_button.png" id="13_iiar1"]
+[ext_resource type="Texture2D" uid="uid://36fw8jsfiplk" path="res://assets/sprites/menu/Next_button_pressed.png" id="14_vov7i"]
+[ext_resource type="Texture2D" uid="uid://ddc7ljrpdobk8" path="res://assets/sprites/menu/back_button.png" id="15_6gux6"]
+[ext_resource type="Texture2D" uid="uid://btamogbfy6ylk" path="res://assets/sprites/menu/back_button_pressed.png" id="16_trr1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrd8r"]
+atlas = ExtResource("5_tt7bt")
+region = Rect2(0, 0, 270, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x53b8"]
+atlas = ExtResource("5_tt7bt")
+region = Rect2(270, 0, 270, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtryq"]
+atlas = ExtResource("5_tt7bt")
+region = Rect2(540, 0, 270, 180)
+
+[node name="Menu" type="TextureRect"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_57dxa")
+script = ExtResource("2_wg6tl")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -133.0
+offset_right = 34.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Start" type="TextureButton" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_qo1cp")
+texture_pressed = ExtResource("3_8chb8")
+
+[node name="About" type="TextureButton" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("5_8fkr7")
+texture_pressed = ExtResource("6_4o5ce")
+
+[node name="Endless" type="TextureButton" parent="Buttons"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("7_uuq3i")
+texture_pressed = ExtResource("8_3gtw2")
+
+[node name="AboutPage1" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_qrd8r")
+script = ExtResource("10_rgwy5")
+
+[node name="Menu" type="TextureButton" parent="AboutPage1"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -95.0
+offset_top = -51.0
+offset_right = -33.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("6_vin3p")
+texture_pressed = ExtResource("7_ue0u1")
+
+[node name="Next" type="TextureButton" parent="AboutPage1"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -51.0
+offset_right = 18.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("13_iiar1")
+texture_pressed = ExtResource("14_vov7i")
+
+[node name="AboutPage2" type="TextureRect" parent="AboutPage1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_x53b8")
+script = ExtResource("10_rgwy5")
+
+[node name="Next" type="TextureButton" parent="AboutPage1/AboutPage2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -46.0
+offset_right = 15.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("13_iiar1")
+texture_pressed = ExtResource("14_vov7i")
+
+[node name="Back" type="TextureButton" parent="AboutPage1/AboutPage2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -44.0
+offset_right = 57.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture_normal = ExtResource("15_6gux6")
+texture_pressed = ExtResource("16_trr1q")
+
+[node name="AboutPage3" type="TextureRect" parent="AboutPage1/AboutPage2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_rtryq")
+script = ExtResource("10_rgwy5")
+
+[node name="Back" type="TextureButton" parent="AboutPage1/AboutPage2/AboutPage3"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -45.0
+offset_right = 55.0
+offset_bottom = -5.0
+grow_vertical = 0
+texture_normal = ExtResource("15_6gux6")
+texture_pressed = ExtResource("16_trr1q")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+script = ExtResource("10_1yqbq")
+music_first = ExtResource("11_tjg48")
+music_main_loop = ExtResource("12_kko7u")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bmc8j")
+
+[connection signal="pressed" from="Buttons/Start" to="." method="start"]
+[connection signal="pressed" from="Buttons/About" to="." method="show_about"]
+[connection signal="pressed" from="Buttons/Endless" to="." method="start" binds= [true]]
+[connection signal="pressed" from="AboutPage1/Menu" to="." method="show_about" binds= [false]]
+[connection signal="pressed" from="AboutPage1/Next" to="AboutPage1" method="dir_pressed" binds= [1]]
+[connection signal="pressed" from="AboutPage1/AboutPage2/Next" to="AboutPage1" method="dir_pressed" binds= [2]]
+[connection signal="pressed" from="AboutPage1/AboutPage2/Back" to="AboutPage1" method="dir_pressed" binds= [0]]
+[connection signal="pressed" from="AboutPage1/AboutPage2/AboutPage3/Back" to="AboutPage1" method="dir_pressed" binds= [1]]
